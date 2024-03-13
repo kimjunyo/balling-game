@@ -7,23 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ScoreEvaluation {
-    public static String fallDownPin(int firstTry, int secondTry) {
-        if (firstTry == 10) {
-            return "X";
-        } else if (firstTry + secondTry == 10) {
-            return firstTry + "|/";
-        } else if (firstTry + secondTry == 0) {
-            return "-";
-        } else {
-            return zeroPoint(firstTry) + "|" + zeroPoint(secondTry);
-        }
-    }
 
     public static int roundScore(int firstTry, int secondTry) {
         if (firstTry + secondTry != 10) {
             return 0;
-        } else if (firstTry == 10) {
-            return -2;
         } else {
             return -1;
         }
@@ -136,11 +123,5 @@ public class ScoreEvaluation {
         return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
     }
 
-    private static String zeroPoint(int tryScore) {
-        if (tryScore == 0) {
-            return "-";
-        } else {
-            return tryScore + "";
-        }
-    }
+
 }
