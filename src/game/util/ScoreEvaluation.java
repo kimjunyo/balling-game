@@ -122,7 +122,7 @@ public class ScoreEvaluation {
 
     private static int frame2(String score) {
         String[] split = score.split("\\|");
-        if (split[0].equals("-")) return 0;
+        if (split[0].equals("-")) return Integer.parseInt(split[1]);
         if (split[1].equals("-")) return Integer.parseInt(split[0]);
         if (split[1].equals("/")) return 10;
         return Integer.parseInt(split[0]) + Integer.parseInt(split[1]);
