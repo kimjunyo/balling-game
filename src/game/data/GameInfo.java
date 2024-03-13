@@ -72,6 +72,11 @@ public class GameInfo {
     private String changeToBallingWord(String fallingPin) {
         String[] split = fallingPin.split("\\|");
         int firstFrame = Integer.parseInt(split[0]);
+        if(split[1].equals("@")) {
+            if(firstFrame==10) return "X";
+            if(firstFrame==0) return "-";
+            return firstFrame + "";
+        }
         int secondFrame = Integer.parseInt(split[1]);
         if (firstFrame == 10) {
             if (secondFrame == 10) {

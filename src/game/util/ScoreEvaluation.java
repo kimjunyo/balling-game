@@ -54,7 +54,7 @@ public class ScoreEvaluation {
         } else if (fallingDownPin.contains("/")) {
             System.out.println("한 개의 추가 프레임입니다!");
             firstTry = InputExceptionProcess.tryInputMismatch(person, scanner);
-            gameInfo.getFallingDownPin().add(firstTry + "");
+            gameInfo.getFallingDownPin().add(firstTry + "|@");
             gameInfo.getRoundScore().add(0);
         }
         roundScoreCalculation(gameInfo);
@@ -118,6 +118,7 @@ public class ScoreEvaluation {
     private static int frame2(String score) {
         String[] split = score.split("\\|");
         if (score.equals("-")) return 0;
+        if (score.contains("@")) return Integer.parseInt(split[0]);
         if (split[0].equals("-")) return Integer.parseInt(split[1]);
         if (split[1].equals("-")) return Integer.parseInt(split[0]);
         if (split[1].equals("/")) return 10;
