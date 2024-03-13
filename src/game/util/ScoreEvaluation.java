@@ -1,7 +1,7 @@
 package game.util;
 
 import game.data.GameInfo;
-import game.exception.ExceptionProcess;
+import game.exception.InputExceptionProcess;
 
 import java.util.List;
 import java.util.Scanner;
@@ -84,18 +84,18 @@ public class ScoreEvaluation {
         int secondTry;
         if (fallingDownPin.contains("X")) {
             System.out.println("두 개의 추가 프레임입니다!");
-            firstTry = ExceptionProcess.tryInputMismatch(person, scanner);
+            firstTry = InputExceptionProcess.tryInputMismatch(person, scanner);
             if (firstTry == 10) {
-                secondTry = ExceptionProcess.tryInputMismatch(person, scanner);
+                secondTry = InputExceptionProcess.tryInputMismatch(person, scanner);
             } else {
-                secondTry = ExceptionProcess.trySecondInputMismatch(person, firstTry, scanner);
+                secondTry = InputExceptionProcess.trySecondInputMismatch(person, firstTry, scanner);
             }
             String fallDownPin = firstTry + "|" + secondTry;
             gameInfo.getFallingDownPin().add(fallDownPin);
             gameInfo.getRoundScore().add(0);
         } else if (fallingDownPin.contains("/")) {
             System.out.println("한 개의 추가 프레임입니다!");
-            firstTry = ExceptionProcess.tryInputMismatch(person, scanner);
+            firstTry = InputExceptionProcess.tryInputMismatch(person, scanner);
             gameInfo.getFallingDownPin().add(firstTry + "");
             gameInfo.getRoundScore().add(0);
         }

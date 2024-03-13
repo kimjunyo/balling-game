@@ -1,7 +1,7 @@
 package main;
 
 import game.data.GameInfo;
-import game.exception.ExceptionProcess;
+import game.exception.InputExceptionProcess;
 import game.util.PrintOut;
 import game.util.ScoreEvaluation;
 
@@ -15,7 +15,7 @@ public class BallingMain {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int peopleNum = ExceptionProcess.peopleInputMismatch(scanner);
+        int peopleNum = InputExceptionProcess.peopleInputMismatch(scanner);
         String[] people = new String[peopleNum];
 
         for (int i = 0; i < peopleNum; i++) {
@@ -31,10 +31,10 @@ public class BallingMain {
             System.out.println(round + "라운드입니다!");
             for (int i = 0; i < peopleNum; i++) {
 
-                int firstTry = ExceptionProcess.tryInputMismatch(people[i], scanner);
+                int firstTry = InputExceptionProcess.tryInputMismatch(people[i], scanner);
                 int secondTry = 0;
                 if (firstTry != 10) {
-                    secondTry = ExceptionProcess.trySecondInputMismatch(people[i], firstTry, scanner);
+                    secondTry = InputExceptionProcess.trySecondInputMismatch(people[i], firstTry, scanner);
                 }
 
                 GameInfo gameInfo = gameInfoList.get(i);

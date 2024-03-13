@@ -3,7 +3,7 @@ package game.exception;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ExceptionProcess {
+public class InputExceptionProcess {
     public static int peopleInputMismatch(Scanner scanner) {
         int peopleNum;
         while (true) {
