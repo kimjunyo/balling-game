@@ -14,6 +14,7 @@ public class BallingMain {
     public static List<GameInfo> gameInfoList = new ArrayList<>();
 
     public static void main(String[] args) {
+        PrintOut.startBowling();
         Scanner scanner = new Scanner(System.in);
         int peopleNum = InputExceptionProcess.peopleInputMismatch(scanner);
         String[] people = new String[peopleNum];
@@ -28,6 +29,7 @@ public class BallingMain {
 
         int round = 1;
         while (round != 11) {
+            PrintOut.round();
             System.out.println(round + "라운드입니다!");
             for (int i = 0; i < peopleNum; i++) {
 
