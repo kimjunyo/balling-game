@@ -80,24 +80,22 @@ public class ScoreEvaluation {
 
     public static void lastRoundScore(String person, GameInfo gameInfo, Scanner scanner) {
         String fallingDownPin = gameInfo.getFallingDownPin().get(9);
-        int firstTry = 0;
+        int firstTry;
         int secondTry;
         if (fallingDownPin.contains("X")) {
-            System.out.print(person + "님의 추가 1프레임 점수 입력: ");
-            firstTry = ExceptionProcess.tryInputMismatch(firstTry, scanner);
+            System.out.println("두 개의 추가 프레임입니다!");
+            firstTry = ExceptionProcess.tryInputMismatch(person, scanner);
             if (firstTry == 10) {
-                System.out.print(person + "추가 2프레임 점수 입력: ");
-                secondTry = ExceptionProcess.tryInputMismatch(firstTry, scanner);
+                secondTry = ExceptionProcess.tryInputMismatch(person, scanner);
             } else {
-                System.out.print(person + "추가 2프레임 점수 입력: ");
-                secondTry = ExceptionProcess.trySecondInputMismatch(firstTry, scanner);
+                secondTry = ExceptionProcess.trySecondInputMismatch(person, firstTry, scanner);
             }
             String fallDownPin = firstTry + "|" + secondTry;
             gameInfo.getFallingDownPin().add(fallDownPin);
             gameInfo.getRoundScore().add(0);
         } else if (fallingDownPin.contains("/")) {
-            System.out.println(person + "추가 1프레임 점수 입력: ");
-            firstTry = ExceptionProcess.tryInputMismatch(firstTry, scanner);
+            System.out.println("한 개의 추가 프레임입니다!");
+            firstTry = ExceptionProcess.tryInputMismatch(person, scanner);
             gameInfo.getFallingDownPin().add(firstTry + "");
             gameInfo.getRoundScore().add(0);
         }
