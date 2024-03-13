@@ -38,38 +38,9 @@ public class ScoreEvaluation {
             int beforeScore = 0;
             if (i != 0) beforeScore = roundScore.get(i - 1);
             if (score.contains("X")) {
-                try {
-                    String nextScore = fallingDownPin.get(i + 1);
-                    if (nextScore.contains("X")) {
-                        String nextNextScore = fallingDownPin.get(i + 2);
-                        if (nextNextScore.contains("X")) {
-                            roundScore.remove(i);
-                            roundScore.add(i, beforeScore + 30);
-                        } else {
-                            int frame1 = frame1(nextNextScore);
-                            roundScore.remove(i);
-                            roundScore.add(i, beforeScore + frame1 + 20);
-                        }
-                    } else {
-                        int frame2 = frame2(nextScore);
-                        roundScore.remove(i);
-                        roundScore.add(i, beforeScore + frame2 + 10);
-                    }
-                } catch (IndexOutOfBoundsException ignored) {
-                }
+                ifScoreContainX(fallingDownPin, roundScore, beforeScore, i);
             } else if (score.contains("/")) {
-                try {
-                    String nextScore = fallingDownPin.get(i + 1);
-                    if (nextScore.contains("X")) {
-                        roundScore.remove(i);
-                        roundScore.add(i, beforeScore + 20);
-                    } else {
-                        int frame1 = frame1(nextScore);
-                        roundScore.remove(i);
-                        roundScore.add(i, beforeScore + frame1 + 10);
-                    }
-                } catch (IndexOutOfBoundsException ignored) {
-                }
+                ifScoreContainSlash(fallingDownPin, roundScore, beforeScore, i);
             } else {
                 int frame2 = frame2(score);
                 roundScore.remove(i);
@@ -112,6 +83,43 @@ public class ScoreEvaluation {
             totalScore = score;
         }
         return totalScore;
+    }
+
+    private static void ifScoreContainX(List<String> fallingDownPin, List<Integer> roundScore, int beforeScore, int i) {
+        try {
+            String nextScore = fallingDownPin.get(i + 1);
+            if (nextScore.contains("X")) {
+                String nextNextScore = fallingDownPin.get(i + 2);
+                if (nextNextScore.contains("X")) {
+                    roundScore.remove(i);
+                    roundScore.add(i, beforeScore + 30);
+                } else {
+                    int frame1 = frame1(nextNextScore);
+                    roundScore.remove(i);
+                    roundScore.add(i, beforeScore + frame1 + 20);
+                }
+            } else {
+                int frame2 = frame2(nextScore);
+                roundScore.remove(i);
+                roundScore.add(i, beforeScore + frame2 + 10);
+            }
+        } catch (IndexOutOfBoundsException ignored) {
+        }
+    }
+
+    private static void ifScoreContainSlash(List<String> fallingDownPin, List<Integer> roundScore, int beforeScore, int i) {
+        try {
+            String nextScore = fallingDownPin.get(i + 1);
+            if (nextScore.contains("X")) {
+                roundScore.remove(i);
+                roundScore.add(i, beforeScore + 20);
+            } else {
+                int frame1 = frame1(nextScore);
+                roundScore.remove(i);
+                roundScore.add(i, beforeScore + frame1 + 10);
+            }
+        } catch (IndexOutOfBoundsException ignored) {
+        }
     }
 
     private static int frame1(String score) {
