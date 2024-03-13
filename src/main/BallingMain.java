@@ -15,14 +15,13 @@ public class BallingMain {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int peopleNum = 0;
-        peopleNum = ExceptionProcess.peopleInputMismatch(peopleNum, scanner);
+        int peopleNum = ExceptionProcess.peopleInputMismatch(scanner);
         String[] people = new String[peopleNum];
 
         for (int i = 0; i < peopleNum; i++) {
             System.out.print((i + 1) + "번째 플레이어 이름: ");
             people[i] = scanner.next();
-            gameInfoList.add(new GameInfo(people[i], new ArrayList<>(), new ArrayList<>(), 0));
+            gameInfoList.add(new GameInfo(people[i]));
         }
 
         PrintOut.printGameInfoList(peopleNum);
@@ -32,13 +31,10 @@ public class BallingMain {
             System.out.println(round + "라운드입니다!");
             for (int i = 0; i < peopleNum; i++) {
 
-                System.out.print(people[i] + "님의 첫 번째 쓰러트린 핀의 개수 : ");
-                int firstTry = 0;
-                firstTry = ExceptionProcess.tryInputMismatch(firstTry, scanner);
+                int firstTry = ExceptionProcess.tryInputMismatch(people[i], scanner);
                 int secondTry = 0;
                 if (firstTry != 10) {
-                    System.out.print(people[i] + "님의 두 번째 쓰러트린 핀의 개수 : ");
-                    secondTry = ExceptionProcess.trySecondInputMismatch(firstTry, scanner);
+                    secondTry = ExceptionProcess.trySecondInputMismatch(people[i], firstTry, scanner);
                 }
 
                 GameInfo gameInfo = gameInfoList.get(i);
