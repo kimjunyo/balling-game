@@ -9,11 +9,11 @@ public class GameInfo {
     ArrayList<Integer> roundScore;
     int totalScore;
 
-    public GameInfo(String player, ArrayList<String> fallingDownPin, ArrayList<Integer> roundScore, int totalScore) {
+    public GameInfo(String player) {
         this.player = player;
-        this.fallingDownPin = fallingDownPin;
-        this.roundScore = roundScore;
-        this.totalScore = totalScore;
+        this.fallingDownPin = new ArrayList<>();
+        this.roundScore = new ArrayList<>();
+        this.totalScore = 0;
     }
 
 
