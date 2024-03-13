@@ -33,16 +33,13 @@ public class BallingMain {
 
                 int firstTry = InputExceptionProcess.tryInputMismatch(people[i], scanner);
                 int secondTry = 0;
-                if (firstTry != 10) {
+                if (firstTry != 10)
                     secondTry = InputExceptionProcess.trySecondInputMismatch(people[i], firstTry, scanner);
-                }
 
                 GameInfo gameInfo = gameInfoList.get(i);
 
-                String fallDownPin = ScoreEvaluation.fallDownPin(firstTry, secondTry);
-                gameInfo.getFallingDownPin().add(fallDownPin);
-                int roundScore = ScoreEvaluation.roundScore(firstTry, secondTry);
-                gameInfo.getRoundScore().add(roundScore);
+                gameInfo.getFallingDownPin().add(PrintOut.printFallDownPin(firstTry, secondTry));
+                gameInfo.getRoundScore().add(ScoreEvaluation.roundScore(firstTry, secondTry));
                 ScoreEvaluation.roundScoreCalculation(gameInfo);
 
                 if (round == 10) ScoreEvaluation.lastRoundScore(people[i], gameInfo, scanner);
