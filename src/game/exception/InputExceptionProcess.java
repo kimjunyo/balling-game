@@ -4,6 +4,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputExceptionProcess {
+
+    /**
+     * > 사람 수를 입력받을 때 예외 처리 메서드
+     * @param scanner 메인에서 쓰던 scanner
+     * @return 플레이하는 사람 수
+     */
     public static int peopleInputMismatch(Scanner scanner) {
         int peopleNum;
         while (true) {
@@ -22,6 +28,12 @@ public class InputExceptionProcess {
         return peopleNum;
     }
 
+    /**
+     * > 첫번째 쓰러트린 핀 개수 입력 예외 처리 메서드
+     * @param player 플레이어명
+     * @param scanner 메인에서 쓰던 scanner
+     * @return 해당 플레이어가 첫 번째 쓰러트린 핀
+     */
     public static int tryInputMismatch(String player, Scanner scanner) {
         int gameTry;
         while (true) {
@@ -40,6 +52,13 @@ public class InputExceptionProcess {
         return gameTry;
     }
 
+    /**
+     * > 두번째 쓰러트린 핀 개수 입력 예외 처리 메서드
+     * @param player 플레이어명
+     * @param firstTry 첫 번째 쓰러트린 핀의 개수
+     * @param scanner 메인에서 쓰던 scanner
+     * @return 두 번째 쓰러트린 핀의 개수
+     */
     public static int trySecondInputMismatch(String player, int firstTry, Scanner scanner) {
         int secondTry;
         while (true) {
