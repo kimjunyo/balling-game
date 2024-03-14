@@ -5,8 +5,17 @@ import main.BallingMain;
 
 import java.util.List;
 
+/**
+ * > 콘솔창 출력 클래스
+ */
 public class PrintOut {
 
+    /**
+     * > 프레임마다 쓰러트린 핀 문자열 출력
+     * @param firstTry 첫 번째 쓰러트린 핀의 개수
+     * @param secondTry 두 번째 쓰러트린 핀의 개수
+     * @return 프레임마다 쓰러트린 핀 문자열
+     */
     public static String printFallDownPin(int firstTry, int secondTry) {
         if (firstTry == 10) {
             return "X";
@@ -19,6 +28,10 @@ public class PrintOut {
         }
     }
 
+    /**
+     * 플레이어마다 볼링 게임판 출력하는 메서드
+     * @param peopleNum 플레이어 수
+     */
     public static void printGameInfoList(int peopleNum) {
         List<GameInfoPerPlayer> gameInfoList = BallingMain.gameInfoList;
         for (int i = 0; i < peopleNum; i++) {
@@ -26,6 +39,9 @@ public class PrintOut {
         }
     }
 
+    /**
+     * 처음 시작할 때 출력 메서드
+     */
     public static void startBowling() {
         System.out.println("""
                  ▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄            ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄\s
@@ -42,6 +58,9 @@ public class PrintOut {
                                                                                                                                                                    \s""");
     }
 
+    /**
+     * round 구별 출력 메서드
+     */
     public static void round() {
         System.out.println("""
                                                                                                      \s
@@ -51,6 +70,11 @@ public class PrintOut {
                                                                                                                                                               \s""");
     }
 
+    /**
+     * 점수가 0이면 -로 문자열 변환하는 메서드
+     * @param tryScore 점수
+     * @return 0일때의 문자열
+     */
     private static String zeroPoint(int tryScore) {
         if (tryScore == 0) {
             return "-";
