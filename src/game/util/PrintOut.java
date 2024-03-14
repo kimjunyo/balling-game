@@ -11,7 +11,7 @@ public class PrintOut {
         if (firstTry == 10) {
             return "X";
         } else if (firstTry + secondTry == 10) {
-            return firstTry + "|/";
+            return zeroPoint(firstTry) + "|/";
         } else if (firstTry + secondTry == 0) {
             return "-";
         } else {
