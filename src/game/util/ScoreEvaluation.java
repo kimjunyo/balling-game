@@ -15,7 +15,7 @@ public class ScoreEvaluation {
      * 스트라이크나 스페어가 났을 때 음수로 점수 저장, 아니면 양수 저장
      * @param firstTry 첫 번째 쓰러트린 핀의 개수
      * @param secondTry 두 번째 쓰러트린 핀의 개수
-     * @return
+     * @return 0, -1 중 둘 중 반환
      */
     public static int roundScore(int firstTry, int secondTry) {
         if (firstTry + secondTry != 10) {
