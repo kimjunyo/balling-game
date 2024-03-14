@@ -10,10 +10,13 @@ public class InputExceptionProcess {
             try {
                 System.out.print("플레이어 수 입력: ");
                 peopleNum = scanner.nextInt();
+                if (peopleNum < 0) throw new NegativeArraySizeException("잘못된 입력값입니다. 자연수를 입력해주세요.");
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("잘못된 입력값입니다. 자연수를 입력해주세요.");
                 scanner.nextLine();
+            } catch (NegativeArraySizeException e) {
+                System.out.println(e.getMessage());
             }
         }
         return peopleNum;
