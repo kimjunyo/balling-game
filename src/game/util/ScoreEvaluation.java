@@ -1,6 +1,6 @@
 package game.util;
 
-import game.data.GameInfo;
+import game.data.GameInfoPerPlayer;
 import game.exception.InputExceptionProcess;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class ScoreEvaluation {
         }
     }
 
-    public static void roundScoreCalculation(GameInfo gameInfo) {
+    public static void roundScoreCalculation(GameInfoPerPlayer gameInfo) {
         List<String> fallingDownPin = gameInfo.getFallingDownPin();
         List<Integer> roundScore = gameInfo.getRoundScore();
         int size = fallingDownPin.size();
@@ -36,7 +36,7 @@ public class ScoreEvaluation {
         }
     }
 
-    public static void lastRoundScore(String person, GameInfo gameInfo, Scanner scanner) {
+    public static void lastRoundScore(String person, GameInfoPerPlayer gameInfo, Scanner scanner) {
         String fallingDownPin = gameInfo.getFallingDownPin().get(9);
         int firstTry;
         int secondTry;
@@ -60,7 +60,7 @@ public class ScoreEvaluation {
         roundScoreCalculation(gameInfo);
     }
 
-    public static int caculateTotalScore(GameInfo gameInfo) {
+    public static int caculateTotalScore(GameInfoPerPlayer gameInfo) {
         List<Integer> roundScore = gameInfo.getRoundScore();
         int totalScore = 0;
         int size = roundScore.size();

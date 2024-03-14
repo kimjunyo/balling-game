@@ -1,6 +1,6 @@
 package main;
 
-import game.data.GameInfo;
+import game.data.GameInfoPerPlayer;
 import game.exception.InputExceptionProcess;
 import game.util.PrintOut;
 import game.util.ScoreEvaluation;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class BallingMain {
 
-    public static List<GameInfo> gameInfoList = new ArrayList<>();
+    public static List<GameInfoPerPlayer> gameInfoList = new ArrayList<>();
 
     public static void main(String[] args) {
         PrintOut.startBowling();
@@ -22,7 +22,7 @@ public class BallingMain {
         for (int i = 0; i < peopleNum; i++) {
             System.out.print((i + 1) + "번째 플레이어 이름: ");
             people[i] = scanner.next();
-            gameInfoList.add(new GameInfo(people[i]));
+            gameInfoList.add(new GameInfoPerPlayer(people[i]));
         }
 
         PrintOut.printGameInfoList(peopleNum);
@@ -38,7 +38,7 @@ public class BallingMain {
                 if (firstTry != 10)
                     secondTry = InputExceptionProcess.trySecondInputMismatch(people[i], firstTry, scanner);
 
-                GameInfo gameInfo = gameInfoList.get(i);
+                GameInfoPerPlayer gameInfo = gameInfoList.get(i);
 
                 gameInfo.getFallingDownPin().add(PrintOut.printFallDownPin(firstTry, secondTry));
                 gameInfo.getRoundScore().add(ScoreEvaluation.roundScore(firstTry, secondTry));
