@@ -3,6 +3,9 @@ package game.exception;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * > 입력 예외 처리 클래스
+ */
 public class InputExceptionProcess {
 
     /**
