@@ -6,8 +6,17 @@ import game.exception.InputExceptionProcess;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * 볼링 점수 계산하는 클래스
+ */
 public class ScoreEvaluation {
 
+    /**
+     * 스트라이크나 스페어가 났을 때 음수로 점수 저장, 아니면 양수 저장
+     * @param firstTry 첫 번째 쓰러트린 핀의 개수
+     * @param secondTry 두 번째 쓰러트린 핀의 개수
+     * @return
+     */
     public static int roundScore(int firstTry, int secondTry) {
         if (firstTry + secondTry != 10) {
             return 0;
@@ -16,6 +25,12 @@ public class ScoreEvaluation {
         }
     }
 
+    /**
+     * roundScore 계산하는 메서드
+     * - fallingDownPin 배열을 하나씩 보는데 만약 X 문자열이 포함되면, ifScoreContainX로 이동
+     * - fallingDownPin 배열을 하나씩 보는데 만약 / 문자열이 포함되면, ifScoreContain/로 이동
+     * @param gameInfo 게임정보
+     */
     public static void roundScoreCalculation(GameInfoPerPlayer gameInfo) {
         List<String> fallingDownPin = gameInfo.getFallingDownPin();
         List<Integer> roundScore = gameInfo.getRoundScore();
@@ -36,6 +51,12 @@ public class ScoreEvaluation {
         }
     }
 
+    /**
+     * 마지막 라운드 점수 계산
+     * @param person 플레이어명
+     * @param gameInfo 플레이어마다 게임정보
+     * @param scanner 메인에서의 scanner
+     */
     public static void lastRoundScore(String person, GameInfoPerPlayer gameInfo, Scanner scanner) {
         String fallingDownPin = gameInfo.getFallingDownPin().get(9);
         int firstTry;
@@ -60,6 +81,11 @@ public class ScoreEvaluation {
         roundScoreCalculation(gameInfo);
     }
 
+    /**
+     * 총 점수 계산하는 메서드
+     * @param gameInfo 플레이어마다 게임정보
+     * @return 총 점수
+     */
     public static int caculateTotalScore(GameInfoPerPlayer gameInfo) {
         List<Integer> roundScore = gameInfo.getRoundScore();
         int totalScore = 0;
@@ -72,6 +98,13 @@ public class ScoreEvaluation {
         return totalScore;
     }
 
+    /**
+     * fallingDownPin의 요소 중 X를 포함하고 있으면 점수 계산하는 메서드
+     * @param fallingDownPin fallingDownPin 문자열 배열
+     * @param roundScore 라운드마다 스코어
+     * @param beforeScore 해당 인덱스 전의 점수
+     * @param i 해당 인덱스
+     */
     private static void ifScoreContainX(List<String> fallingDownPin, List<Integer> roundScore, int beforeScore, int i) {
         try {
             String nextScore = fallingDownPin.get(i + 1);
@@ -94,6 +127,13 @@ public class ScoreEvaluation {
         }
     }
 
+    /**
+     * fallingDownPin의 요소 중 /를 포함하고 있으면 점수 계산하는 메서드
+     * @param fallingDownPin fallingDownPin 문자열 배열
+     * @param roundScore 라운드마다 스코어
+     * @param beforeScore 해당 인덱스 전의 점수
+     * @param i 해당 인덱스
+     */
     private static void ifScoreContainSlash(List<String> fallingDownPin, List<Integer> roundScore, int beforeScore, int i) {
         try {
             String nextScore = fallingDownPin.get(i + 1);
@@ -109,12 +149,22 @@ public class ScoreEvaluation {
         }
     }
 
+    /**
+     * 한 프레임에서의 점수를 가져오는 메서드
+     * @param score 두 프레임의 점수 문자열
+     * @return 한 프레임의 점수
+     */
     private static int frame1(String score) {
         String[] split = score.split("\\|");
         if (split[0].equals("-")) return 0;
         return Integer.parseInt(split[0]);
     }
 
+    /**
+     * 두 프레임에서의 점수를 가져오는 메서드
+     * @param score 두 프레임의 점수 문자열
+     * @return 두 프레임의 점수
+     */
     private static int frame2(String score) {
         String[] split = score.split("\\|");
         if (score.equals("-")) return 0;
