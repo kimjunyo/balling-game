@@ -3,13 +3,22 @@ package game.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameInfo {
+/**
+ * > GameInfoPerPlayer Class
+ * - 플레이어마다 게임정보를 저장하는 클래스
+ * - 게임 플레이어, 프레임마다 쓰러트린 핀의 개수, 각 라운드마다 점수, 총 점수를 필드로 가지고 있음
+ */
+public class GameInfoPerPlayer {
     String player;
     ArrayList<String> fallingDownPin;
     ArrayList<Integer> roundScore;
     int totalScore;
 
-    public GameInfo(String player) {
+    /**
+     * > 생성자
+     * @param player 콘솔 입력값으로 받으면 GamaeInfoPerPlayer 생성
+     */
+    public GameInfoPerPlayer(String player) {
         this.player = player;
         this.fallingDownPin = new ArrayList<>();
         this.roundScore = new ArrayList<>();
@@ -29,6 +38,12 @@ public class GameInfo {
         this.totalScore = totalScore;
     }
 
+    /**
+     * > toString method
+     * - 라운드 1부터 10까지 출력, 10라운드 출력 시 탭을 한번 더줌.
+     * - 쓰러트린 핀, 라운드마다 점수 출력
+     * @return 볼링 게임판 출력
+     */
     @Override
     public String toString() {
         StringBuilder roundArray = new StringBuilder();
@@ -69,6 +84,11 @@ public class GameInfo {
                 "\n________________________________________________________________________________________________________________________";
     }
 
+    /**
+     * 점수를 볼링표기법으로 바꾸는 메서드
+     * @param fallingPin 쓰러트린 핀의 문자열
+     * @return 볼링 표기법대로 바꾼 문자열
+     */
     private String changeToBallingWord(String fallingPin) {
         String[] split = fallingPin.split("\\|");
         int firstFrame = Integer.parseInt(split[0]);
